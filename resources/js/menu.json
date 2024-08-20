@@ -4,6 +4,7 @@
         "title": "Customer",
         "icon": "custom-users",
         "to": "/customer/",
+        "permission": "edit user",
         "children": [
             {
                 "title": "Add Customer",
@@ -68,8 +69,7 @@
             },
             {
                 "title": "User Profile",
-                "to": "/app/user/userprofile",
-                "permission": "edit user"
+                "to": "/app/user/userprofile"
             },
             {
                 "title": "Cards",
@@ -117,7 +117,8 @@
             },
             {
                 "title": "Analytics",
-                "to": "/dashboard/analytics"
+                "to": "/dashboard/analytics",
+                "permission": "edit user"
             }
         ]
     },
@@ -151,7 +152,8 @@
     {
         "title": "Chat",
         "icon": "custom-chat",
-        "to": "/app/chats"
+        "to": "/app/chats",
+        "permission":"create project"
     },
     {
         "title": "Calendar",

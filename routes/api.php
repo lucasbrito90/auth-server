@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('roles')->group(function () {
     Route::get('/permissions', [RolesAndPermissionsController::class, 'rolesAndPermissions']);
     Route::get('/all', [RolesAndPermissionsController::class, 'allRoles']);
+    Route::get('/user-permissions', [RolesAndPermissionsController::class, 'getAuthenticatedUserPermissions']);
 });
 
 Route::prefix('menu')->group(function () {
