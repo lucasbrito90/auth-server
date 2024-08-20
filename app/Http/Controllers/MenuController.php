@@ -26,6 +26,13 @@ class MenuController extends Controller
         $user = Token::find($token_id)->user;
 
         $menu = file_get_contents(base_path('resources/js/menu.json'));
+
+        if (!json_validate($menu)) {
+            return response()->json([
+                'message' => 'Invalid JSON Menu'
+            ], 500);
+        }
+
         $menuCollection = collect(json_decode($menu, true));
 
 
