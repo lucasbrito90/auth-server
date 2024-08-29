@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return \App\Models\User::turnMenuIntoCollection();
+    $user = \App\Models\User::where('id', auth()->user()->id)->first();
+    dd($user->getPermissionNames());
 });
 
 Route::get('/dashboard', function () {

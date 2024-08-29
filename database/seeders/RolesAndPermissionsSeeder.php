@@ -16,21 +16,21 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-//        $enrollment = Role::create(['name' => 'enrollment']);
-//        $viewUser = Permission::create(['name' => 'view user']);
-//        $editUser = Permission::create(['name' => 'edit user']);
-//        $deleteUser = Permission::create(['name' => 'delete user']);
-//        $createUser = Permission::create(['name' => 'create user']);
-//
-//        $enrollment->syncPermissions([$viewUser, $editUser, $deleteUser, $createUser]);
-
-
-        $enrollment = Role::create(['name' => 'project']);
-        $viewUser = Permission::create(['name' => 'view project']);
-        $editUser = Permission::create(['name' => 'edit project']);
-        $deleteUser = Permission::create(['name' => 'delete project']);
-        $createUser = Permission::create(['name' => 'create project']);
+        $enrollment = Role::create(['name' => 'enrollment']);
+        $viewUser = Permission::create(['name' => 'view user']);
+        $editUser = Permission::create(['name' => 'edit user']);
+        $deleteUser = Permission::create(['name' => 'delete user']);
+        $createUser = Permission::create(['name' => 'create user']);
 
         $enrollment->syncPermissions([$viewUser, $editUser, $deleteUser, $createUser]);
+
+
+//        $enrollment = Role::create(['name' => 'project']);
+//        $viewUser = Permission::create(['name' => 'view project']);
+//        $editUser = Permission::create(['name' => 'edit project']);
+//        $deleteUser = Permission::create(['name' => 'delete project']);
+//        $createUser = Permission::create(['name' => 'create project']);
+//
+//        $enrollment->syncPermissions([$viewUser, $editUser, $deleteUser, $createUser]);
     }
 }

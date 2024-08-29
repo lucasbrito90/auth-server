@@ -23,7 +23,42 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'language',
+        'sector',
+        'role',
+        'date_of_birth',
+        'phone_number',
+        'address',
+        'city',
+        'country',
+        'state_province',
+        'postal_code',
+        'email_notifications',
+        'sms_notifications',
+        'web_notifications',
+        'avatar',
     ];
+
+    private array $profileSteps = [
+        'name',
+        'email',
+        'language',
+        'sector',
+        'role',
+        'date_of_birth',
+        'phone_number',
+        'address',
+        'city',
+        'country',
+        'state_province',
+        'postal_code',
+        'avatar',
+        'active',
+    ];
+
+    protected $appends = ['completion_percentage'];
+    //cast progress field filled
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,9 +83,14 @@ class User extends Authenticatable
         ];
     }
 
-    public static function turnMenuIntoCollection(): Collection
+    public function getCompletionPercentageAttribute(): float|int
     {
-        $menu = file_get_contents(base_path('resources/js/menu.json'));
-        return collect(json_decode($menu, true));
+        $properties = $this->profileSteps;
+
+        $filled = collect($properties)->filter(function ($property) {
+            return !empty($this->{$property});
+        })->count();
+
+        return ($filled / count($properties)) * 100;
     }
 }
