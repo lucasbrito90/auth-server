@@ -57,8 +57,6 @@ class User extends Authenticatable
     ];
 
     protected $appends = ['completion_percentage'];
-    //cast progress field filled
-
 
     /**
      * The attributes that should be hidden for serialization.

@@ -13,24 +13,22 @@ class ListUsersControllers extends Controller
     {
         $paginate = $request->input('limit', 10);
 
-            return DB::table('users')
-                ->when($request->name, function ($query, $name) {
-                    return $query->where('name', 'like', "%$name%");
-                })
-                ->when($request->email, function ($query, $email) {
-                    return $query->where('email', 'like', "%$email%");
-                })
-                ->when($request->role, function ($query, $role) {
-                    return $query->where('role', 'like', "%$role%");
-                })
-                ->when($request->sector, function ($query, $sector) {
-                    return $query->where('sector', 'like', "%$sector%");
-                })
-                ->when($request->phone_number, function ($query, $phone_number) {
-                    return $query->where('phone_number', 'like', "%$phone_number%");
-                })
-                ->paginate($paginate);
-
+        return User::when($request->name, function ($query, $name) {
+            return $query->where('name', 'like', "%$name%");
+        })
+            ->when($request->email, function ($query, $email) {
+                return $query->where('email', 'like', "%$email%");
+            })
+            ->when($request->role, function ($query, $role) {
+                return $query->where('role', 'like', "%$role%");
+            })
+            ->when($request->sector, function ($query, $sector) {
+                return $query->where('sector', 'like', "%$sector%");
+            })
+            ->when($request->phone_number, function ($query, $phone_number) {
+                return $query->where('phone_number', 'like', "%$phone_number%");
+            })
+            ->paginate($paginate);
 
     }
 }
