@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\{Enrollments\Users\ActiveUserController,
     Enrollments\Users\DeactiveUserController,
+    Enrollments\Users\GetUserByAccessTokenController,
+    Enrollments\Users\UpdateUserController,
+    Enrollments\Users\UpdateUserPasswordController,
+    Enrollments\Users\UserLogOutController,
     RolesAndPermissionsController,
-    UpdateUserController};
+    SendEmailVerificationController};
 use App\Http\Controllers\Enrollments\Users\{CreateUserController,
     GetUserController,
     GetUserPermissionsController,
@@ -32,6 +36,13 @@ Route::prefix('user')->group( callback: function () {
         Route::post('/deactivate', DeactiveUserController::class);
         Route::post('/get', GetUserController::class);
         Route::post('/update', UpdateUserController::class);
+        Route::post('/logout', UserLogOutController::class);
+        Route::post('/update-password', UpdateUserPasswordController::class);
+        Route::post('/send-email-verification', SendEmailVerificationController::class);
+    });
+
+    Route::prefix('token')->group(function () {
+        Route::post('/get-user', GetUserByAccessTokenController::class);
     });
 
     Route::prefix('permissions')->group(function () {
