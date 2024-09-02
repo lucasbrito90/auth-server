@@ -24,8 +24,12 @@ class UpdateUserController extends Controller
             'date_of_birth' => 'nullable|date',
             'state_province' => 'nullable|string',
             'postal_code' => 'nullable|string',
-            'avatar' => 'nullable|image|max:2048',
+            'avatar' => 'nullable|max:2048',
         ]);
+
+        if($validated['avatar'] === 'null') {
+            unset($validated['avatar']);
+        }
 
         $user = User::where('email', $validated['email'])->firstOrFail();
 
